@@ -1,0 +1,56 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\begin{document}
+	
+	\title{2D Inverted Pendulum}
+	\author{Davis Benz\\
+		    Equations of Motion}
+	
+	\maketitle
+	
+	\section{Terms}
+		\begin{itemize}
+			\item Subscripts
+				\begin{itemize}
+					\item \textbf{b}: body
+					\item \textbf{m}: motor
+					\item \textbf{g}: gravity, IE a force or moment due strictly to gravity
+					\item \textbf{f}: friction, frictional forces or moments
+					\item \textbf{o}: origin point of the system
+				\end{itemize}
+		\end{itemize}
+	\section{Equations Of Motion}
+		\begin{equation}
+			\sum M = I\alpha
+		\end{equation}
+		\begin{equation}
+			-M_{bg}+M_{bf}-M_{mg}+T_m-M_{mf} = I\alpha_b
+		\end{equation}
+		\begin{equation}
+			M_{bg} = m_b g*l_b sin(\theta_b), M_{mg} = m_m g*l_msin(\theta_b)
+		\end{equation}
+		\begin{equation}
+			M_{bf} = C_b \dot{\theta}_b, M_{mf} = C_b \dot{\theta}_b
+		\end{equation}
+		\begin{equation}
+			I = I_{bo} + I_{mo}
+		\end{equation}
+		\begin{equation}
+			I_{mo} = I_m+m_wl^2
+		\end{equation}
+		\begin{equation}
+			-m_b g*l_b sin(\theta_b) + C_b \dot{\theta}_b - m_m g*l_msin(\theta_b) + T_m - C_b \dot{\theta}_b = (I_{bo}+I_{mo})\alpha_b
+		\end{equation}
+		\begin{equation}
+			\ddot{\theta_b} = \frac{m_b g*l_b sin(\theta_b) - C_b \dot{\theta}_b + m_m g*l_msin(\theta_b) - T_m + C_b \dot{\theta}_b}{I_{bo}+I_m+m_ml^2}
+		\end{equation}
+		\begin{equation}
+			\ddot{\theta_b} = \frac{gsin(\theta_b)(m_bl_b + m_ml_m) - C_b \dot{\theta}_b - T_m + C_b \dot{\theta}_b}{I_{bo}+I_m+m_ml^2}
+		\end{equation}
+		
+	
+	
+\end{document}

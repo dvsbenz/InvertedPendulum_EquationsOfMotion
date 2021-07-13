@@ -82,7 +82,7 @@
 			\begin{equation}
 				\boxed{P_\phi = I_m(\dot\theta + \dot\phi)}
 			\end{equation}
-		\subsection{Conversion to Vector Notation}
+		\subsection{Equations of Motion}
 			\begin{equation}
 				\frac{d}{dt}\frac{\sigma\mathcal{L}}{\sigma\dot\theta} = \frac{\sigma\mathcal{L}}{\sigma\theta} => \frac{d}{dt}P_\theta = \frac{\sigma\mathcal{L}}{\sigma\theta}
 			\end{equation}
@@ -122,18 +122,18 @@
 			M_{bf} = C_b \dot{\theta}_b, M_{mf} = C_b \dot{\theta}_b
 		\end{equation}
 		\begin{equation}
-			I = I_{bo} + I_{mo}
+			I_{tot} = I_{bo} + I_{mo}
 		\end{equation}
 		\begin{equation}
 			I_{mo} = I_m+m_wl^2
 		\end{equation}
 		\begin{equation}
-			-m_b g*l_b sin(\theta_b) + C_b \dot{\theta}_b - m_m g*l_msin(\theta_b) + T_m - C_b \dot{\theta}_b = (I_{bo}+I_{mo})\alpha_b
+			-m_b g*l_b sin(\theta_b) + C_b \dot{\theta}_b - m_m g*l_msin(\theta_b) + T_m - C_m \dot{\theta}_m = I_{tot}\alpha_b
 		\end{equation}
 		\begin{equation}
-			\ddot{\theta_b} = \frac{m_b g*l_b sin(\theta_b) - C_b \dot{\theta}_b + m_m g*l_msin(\theta_b) - T_m + C_b \dot{\theta}_b}{I_{bo}+I_m+m_ml^2}
+			\ddot{\theta_b} = \frac{m_b g*l_b sin(\theta_b) - C_b \dot{\theta}_b + m_m g*l_msin(\theta_b) - T_m + C_m \dot{\theta}_m}{I_{bo}+I_m+m_ml^2}
 		\end{equation}
 		\begin{equation}
-			\ddot{\theta_b} = \frac{gsin(\theta_b)(m_bl_b + m_ml_m) - C_b \dot{\theta}_b - T_m + C_b \dot{\theta}_b}{I_{bo}+I_m+m_ml^2}
+			\ddot{\theta_b} = \frac{gsin(\theta_b)(m_bl_b + m_ml_m) - C_b \dot{\theta}_b - T_m + C_m \dot{\theta}_m}{I_{bo}+I_m+m_ml^2}
 		\end{equation}
 \end{document}

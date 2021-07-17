@@ -113,27 +113,55 @@
 			\sum M = I\alpha
 		\end{equation}
 		\begin{equation}
-			-M_{bg}+M_{bf}-M_{mg}+T_m-M_{mf} = I\alpha_b
+			-M_{bg}+M_{bf}-M_{mg}+T_m-M_{mf} = I_{tot}\ddot\theta
 		\end{equation}
 		\begin{equation}
-			M_{bg} = m_b g*l_b sin(\theta_b), M_{mg} = m_m g*l_msin(\theta_b)
+			M_{bg} = m_b g*l_b sin(\theta), M_{mg} = m_m g*l_msin(\theta)
 		\end{equation}
 		\begin{equation}
-			M_{bf} = C_b \dot{\theta}_b, M_{mf} = C_b \dot{\theta}_b
+			M_{bf} = C_b \dot\theta, M_{mf} = C_m \dot\phi
 		\end{equation}
 		\begin{equation}
 			I_{tot} = I_{bo} + I_{mo}
 		\end{equation}
 		\begin{equation}
-			I_{mo} = I_m+m_wl^2
+			I_{mo} = I_m+m_wl_m^2
 		\end{equation}
 		\begin{equation}
-			-m_b g*l_b sin(\theta_b) + C_b \dot{\theta}_b - m_m g*l_msin(\theta_b) + T_m - C_m \dot{\theta}_m = I_{tot}\alpha_b
+			-m_b g*l_b sin(\theta) + C_b \dot{\theta}_b - m_m g*l_msin(\theta) + T_m - C_m \dot\phi = I_{tot}\ddot\theta
 		\end{equation}
 		\begin{equation}
-			\ddot{\theta_b} = \frac{m_b g*l_b sin(\theta_b) - C_b \dot{\theta}_b + m_m g*l_msin(\theta_b) - T_m + C_m \dot{\theta}_m}{I_{bo}+I_m+m_ml^2}
+			\ddot\theta = \frac{m_b g*l_b sin(\theta) - C_b \dot\theta + m_m g*l_msin(\theta) - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}
 		\end{equation}
 		\begin{equation}
-			\ddot{\theta_b} = \frac{gsin(\theta_b)(m_bl_b + m_ml_m) - C_b \dot{\theta}_b - T_m + C_m \dot{\theta}_m}{I_{bo}+I_m+m_ml^2}
+			\ddot\theta = \frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}
 		\end{equation}
+		\begin{equation}
+			-T_m+M_{mf} = I_m(\ddot\theta + \ddot\phi)
+		\end{equation}
+		\begin{equation}
+			-T_m + C_m\dot\phi = I_m\ddot\theta + I_m\ddot\phi
+		\end{equation}
+		\begin{equation}
+			I_m\ddot\phi = -I_m\ddot\theta-T_m+C_m\dot\phi
+		\end{equation}
+		\begin{equation}
+			\ddot\phi = - \ddot\theta - \frac{T_m-C_m\dot\phi}{I_m}
+		\end{equation}
+		\begin{equation}
+			\ddot\phi = -\left(\frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}\right) - \left(\frac{T_m-C_m\dot\phi}{I_m}\right)
+		\end{equation}
+		\begin{equation}
+			\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(-T_m+C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}
+		\end{equation}
+		\begin{equation}
+			\boxed{\ddot\theta = \frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}}
+		\end{equation}
+		\begin{equation}
+			\boxed{\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(-T_m+C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}}
+		\end{equation}
+		\begin{equation}
+			\boxed{T_m = K_m u}
+		\end{equation}
+
 \end{document}

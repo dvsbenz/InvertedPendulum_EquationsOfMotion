@@ -146,31 +146,105 @@
 			I_m\ddot\phi = -I_m\ddot\theta-T_m+C_m\dot\phi
 		\end{equation}
 		\begin{equation}
-			\ddot\phi = - \ddot\theta - \frac{T_m-C_m\dot\phi}{I_m}
+			\ddot\phi = - \ddot\theta + \frac{-T_m+C_m\dot\phi}{I_m}
 		\end{equation}
 		\begin{equation}
-			\ddot\phi = -\left(\frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}\right) - \left(\frac{T_m-C_m\dot\phi}{I_m}\right)
+			\ddot\phi = -\left(\frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}\right) + \left(\frac{-T_m+C_m\dot\phi}{I_m}\right)
 		\end{equation}
 		\begin{equation}
-			\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(-T_m+C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}
+			\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(T_m-C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}
 		\end{equation}
 		\begin{equation}
 			\boxed{\ddot\theta = \frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}}
 		\end{equation}
 		\begin{equation}
-			\boxed{\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(-T_m+C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}}
+			\boxed{\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(T_m-C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}}
 		\end{equation}
 		\begin{equation}
 			\boxed{T_m = K_m u}
 		\end{equation}
 	
-	\section{Control Systems}
+	\section{Control System}
 		To start, use a linear state space model of the system to design the control algorithm around
 		\begin{equation}
 			\dot x(t) = Ax(t) + Bu(t)
 		\end{equation}
 		\begin{equation}
 			x(t) = [\theta,\ \dot\theta,\ \dot\phi]
+		\end{equation}
+		\begin{equation}
+			u(t) = T_m => K_mu
+		\end{equation}
+		\begin{equation}
+			\begin{bmatrix}
+				\dot\theta \\ \ddot\theta \\ \ddot\phi 
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+				ii & ij & ik \\ ji & jj & jk \\ ki & kj & kk
+			\end{bmatrix}
+			\begin{bmatrix}
+				\theta \\ \dot\theta \\ \dot\phi
+			\end{bmatrix}
+			+
+			\begin{bmatrix}
+				\hat{i} \\ \hat{j} \\ \hat{k}
+			\end{bmatrix}
+			K_mu(t)
+		\end{equation}
+		\begin{equation}
+			\ddot\theta = \frac{gsin(\theta)(m_bl_b + m_ml_m) - C_b \dot\theta - T_m + C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}
+		\end{equation}
+		\begin{equation}
+			\ddot\phi = \frac{(I_{bo}+m_ml_m^2)(T_m-C_m\dot\phi)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{gsin(\theta)(m_bl_b+m_ml_m)-C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}
+		\end{equation}
+		assuming small angles
+		\begin{equation}
+			sin(\theta) \approx \theta
+		\end{equation}
+		\begin{equation}
+			\ddot\theta = \frac{g\theta(m_bl_b + m_ml_m)}{I_{bo}+I_m+m_ml_m^2} - \frac{C_b \dot\theta}{I_{bo}+I_m+m_ml_m^2} - \frac{T_m}{I_{bo}+I_m+m_ml_m^2} + \frac{C_m \dot\phi}{I_{bo}+I_m+m_ml_m^2}
+		\end{equation}
+		\begin{equation}
+			\ddot\phi = -\frac{C_m\dot\phi(I_{bo}+m_ml_m^2)}{I_m(I_{bo}+I_m+m_ml_m^2)} + \frac{T_m(I_{bo}+m_ml_m^2)}{I_m(I_{bo}+I_m+m_ml_m^2)} - \frac{g\theta(m_bl_b+m_ml_m)}{I_{bo}+I_m+m_ml_m^2} + \frac{C_b\dot\theta}{I_{bo}+I_m+m_ml_m^2}
+		\end{equation}
+		\begin{equation}
+			\dot\theta = ii\theta + ij\dot\theta + ik\dot\phi
+		\end{equation}
+		\begin{equation}
+			ii = 0,\ ij = 1,\ ik = 0
+		\end{equation}
+		\begin{equation}
+			\ddot\theta = ji\theta + jj\dot\theta + jk\dot\phi
+		\end{equation}
+		\begin{equation}
+			ji = \frac{g(m_bl_b+m_ml_m)}{I_{bo}+I_m+m_ml_m^2},\ jj = -\frac{C_b}{I_{bo}+I_m+m_ml_m^2},\ jk = \frac{C_m}{I_{bo}+I_m+m_ml_m^2}
+		\end{equation}
+		\begin{equation}
+			\ddot\phi = ki\theta + kj\dot\theta + kk\dot\phi
+		\end{equation}
+		\begin{equation}
+			ki = -\frac{g(m_bl_b+m_ml_m)}{I_{bo}+I_m+m_ml_m^2},\ kj = \frac{C_b}{I_{bo}+I_m+m_ml_m^2},\ kk = -\frac{C_m(I_{bo}+m_ml_m^2)}{I_m(I_{bo}+I_m+m_ml_m^2)}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				A = 
+				\begin{bmatrix}
+					0 & 1 & 0 \\ 
+					\frac{g(m_bl_b+m_ml_m)}{I_{bo}+I_m+m_ml_m^2} & -\frac{C_b}{I_{bo}+I_m+m_ml_m^2} & \frac{C_m}{I_{bo}+I_m+m_ml_m^2} \\ 
+					-\frac{g(m_bl_b+m_ml_m)}{I_{bo}+I_m+m_ml_m^2} & \frac{C_b}{I_{bo}+I_m+m_ml_m^2} & -\frac{C_m(I_{bo}+m_ml_m^2)}{I_m(I_{bo}+I_m+m_ml_m^2)}
+				\end{bmatrix}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+			B = 
+			\begin{bmatrix}
+				0 \\ 
+				-\frac{K_m}{I_{bo}+I_m+m_ml_m^2} \\
+				\frac{K_m(I_{bo}+m_ml_m^2)}{I_m(I_{bo}+I_m+m_ml_m^2)}
+			\end{bmatrix}
+			}
 		\end{equation}
 
 \end{document}
